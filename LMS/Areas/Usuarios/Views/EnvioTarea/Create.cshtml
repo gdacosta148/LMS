@@ -1,0 +1,124 @@
+﻿@model LMS.Models.ViewModels.EnvioTareaViewModel
+@using LMS.Extensions
+
+@{
+    ViewData["Title"] = "Enviar Tarea";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2 class="text-info text-center"> Create</h2>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<form enctype="multipart/form-data" asp-action="Create">
+    <div class="border backgroundWhite">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="EnvioTarea.Id" />
+
+  
+
+        @*<div class="form-group row" >
+
+            <div class="col-3">
+
+                <label  asp-for="Calificacionesid.Id" class="col-form-label"></label>
+            </div>*@
+
+            @*<div class="col-5">*@
+
+                @*@Html.DropDownListFor(model => model.EnvioTarea.CalificacionId, new SelectList(Model.Calificaciones
+               , "Id", "Nombre"), "Select")*@
+
+                <input type="hidden"  asp-for="Calificacionesid.Id" class="form-control" />
+            @*</div>*@
+
+
+        @*</div>*@
+
+
+
+        <div class="form-group row">
+
+            @*<div class="col-2">*@
+            <label asp-for="EnvioTarea.File" class="col-form-label"></label>
+            @*</div>*@
+
+
+
+            <div class="custom-file">
+                <input asp-for="EnvioTarea.File" class="custom-file-input" type="file">
+
+            </div>
+
+            <span asp-validation-for="EnvioTarea.File" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="EnvioTarea.Descripcion" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                @*@Html.TextAreaFor(t => t.EnvioTarea.Descripcion)*@
+
+                <textarea id="Material" asp-for="EnvioTarea.Descripcion"></textarea>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+                <partial name="_CreateAndBackToListButton" />
+
+            </div>
+
+        </div>
+
+
+    </div>
+</form>
+
+
+<script>
+
+    //$(document).ready(function () {
+    //    $("#EnvioTarea_Descripcion").summernote({
+    //        height: 300,
+    //        minHeight: null,
+    //        maxHeight: null,
+
+    //        callbacks: {
+    //            onImageUpload: function (files) {
+    //                for (var i = 0; i < files.length; i++) {
+    //                    uploadImage(files[i]);
+    //                }
+    //            }
+    //        },
+
+    //    });
+    //});
+
+
+
+    $('#Material').each(function () {
+        var editor = new Jodit(this);
+
+    });
+
+    $(document).ready(function () {
+
+        var form = document.querySelector('form')
+        bsCustomFileInput.init()
+    })
+
+
+
+</script>
+

@@ -1,0 +1,133 @@
+﻿@model LMS.Models.ViewModels.CalificacionyTareaViewModel
+@using LMS.Extensions
+
+@{
+    ViewData["Title"] = "Calificar Tarea";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<h2 class="text-info text-center"> Calificar Tarea</h2>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<form method="post" enctype="multipart/form-data" asp-action="CalificarTarea">
+    <div class="border backgroundWhite">
+
+        @*<input type="hidden" asp-for="EnvioTarea.Id" />*@
+
+        <input type="hidden" asp-for="Calificaciones.Id" />
+
+
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+        <div class="form-group row">
+
+            @*<div class="col-2">*@
+            <label asp-for="Calificaciones.RevisionTarea" class="col-form-label"></label>
+            @*</div>*@
+
+
+
+            <div class="custom-file">
+                <input asp-for="Calificaciones.RevisionTarea" class="custom-file-input" type="file">
+
+            </div>
+
+            <span asp-validation-for="EnvioTarea.File" class="text-danger"></span>
+        </div>
+
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Calificaciones.Nota" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input asp-for="Calificaciones.Nota" class="form-control" />
+            </div>
+
+
+
+        </div>
+
+
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Calificaciones.ComentarioProfesor" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                @*@Html.TextAreaFor(t => t.Calificaciones.ComentarioProfesor)*@
+
+                <textarea id="Material" asp-for="Calificaciones.ComentarioProfesor"></textarea>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+
+                <partial name="_EditTareaAndBackToListButton" model="Model.Calificaciones.Id" />
+
+            </div>
+
+        </div>
+
+
+    </div>
+</form>
+
+
+<script>
+
+    //$(document).ready(function () {
+    //    $("#Calificaciones_ComentarioProfesor").summernote({
+    //        height: 300,
+    //        minHeight: null,
+    //        maxHeight: null,
+
+    //        callbacks: {
+    //            onImageUpload: function (files) {
+    //                for (var i = 0; i < files.length; i++) {
+    //                    uploadImage(files[i]);
+    //                }
+    //            }
+    //        },
+
+    //    });
+    //});
+
+
+    $('#Material').each(function () {
+        var editor = new Jodit(this);
+      
+    });
+
+    $(document).ready(function () {
+
+        var form = document.querySelector('form')
+        bsCustomFileInput.init()
+    })
+
+
+
+</script>
+
+
+

@@ -1,0 +1,137 @@
+﻿
+
+@model LMS.Models.ViewModels.CursoViewModel
+
+@using LMS.Utility
+@{
+    ViewData["Title"] = "Quiz Index";
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<br />
+<br />
+
+<div class="border backgroundWhite">
+
+    <div class="row">
+
+        <div class="col-6">
+
+            <h2 class="text-info">Lista de Quizs</h2>
+        </div>
+
+
+
+        @if (User.IsInRole(SD.TeacherUser))
+        {
+        
+            <div class="col-6 text-right">
+                <p>
+
+                    @*<a asp-action="CrearTarea" asp-route="@Model.Curso.Id" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Crear Nuevo</a>*@
+
+                    <a href="@Url.Action("CrearQuiz", "Curso", new { Id = Model.Curso.Id})" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Crear Nuevo</a>
+                </p>
+            </div>
+        }
+
+
+
+    </div>
+
+
+    <br />
+
+
+    <div>
+        @if (Model.QuizList.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Quiz.QuizName)
+
+                    </th>
+
+               
+
+                    <th>
+                        @*@Html.DisplayNameFor(m => m.Tareas.Materia.Nombre)*@
+
+                        @Html.DisplayNameFor(m => m.Quiz.Curso.Nombre)
+
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(m => m.Quiz.QuestionQuantity)
+
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(m => m.Quiz.maximunscore)
+
+                    </th>
+
+
+
+                    <th>
+
+                    </th>
+
+                    <th>
+
+
+                    </th>
+
+
+                </tr>
+
+                @foreach (var item in Model.QuizList)
+                {
+            <tr>
+
+             
+
+          
+
+                <td>
+                    <a href="@Url.Action("QuestionIndex", "Quiz", new { Id = item.Id  })">       @Html.DisplayFor(m => item.QuizName) </a>
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(m => item.Curso.Nombre)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(m => item.QuestionQuantity)
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(m => item.maximunscore)
+
+                </td>
+
+                @if (User.IsInRole(SD.TeacherUser))
+                {
+                    <td>
+                        <partial name="_QuizTableButtonPartial" model="item.Curso.Id" />
+                    </td>
+
+                }
+            </tr>
+
+                }
+            </table>
+        }
+        else
+        {
+            <p> no hay Quiz existentes...</p>
+        }
+    </div>
+
+
+</div>

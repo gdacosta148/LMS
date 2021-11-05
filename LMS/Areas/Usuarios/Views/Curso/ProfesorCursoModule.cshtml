@@ -1,0 +1,177 @@
+﻿@model LMS.Models.ViewModels.CursoViewModel
+
+@using LMS.Utility
+
+@{
+    ViewData["Title"] = "CursoModule";
+    //Layout = "~/Views/Shared/_VistaCursoModelo.cshtml";
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+
+
+            @if (User.IsInRole(SD.TeacherUser))
+            {
+
+                <div class="col-md-4">
+
+
+                    <div class="Container3">
+
+                        <img class="image3" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="~/images/Folderlogo.png" data-holder-rendered="true">
+
+
+                        <div class="overlay3">
+
+                            <a href="@Url.Action("TareasCursoIndex", "Tareas", new { Id = Model.Curso.Id })">      <div class="text3">Actividades</div> </a>
+                        </div>
+
+                        <h4 class="title2" align="center">  Actividades</h4>
+
+                    </div>
+
+                </div>
+            }
+
+            @if (User.IsInRole(SD.StudenUser))
+            {
+
+                <div class="col-md-4">
+
+
+                    <div class="Container3">
+
+                        <img class="image3" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="~/images/Folderlogo.png" data-holder-rendered="true">
+
+
+                        <div class="overlay3">
+
+                            <a href="@Url.Action("TareasModule", "Curso", new { Id = Model.Curso.Id })">      <div class="text3">Actividades</div> </a>
+                        </div>
+
+                        <h4 class="title2" align="center">  Actividades</h4>
+
+                    </div>
+
+                </div>
+            }
+
+
+
+            <div class="col-md-4">
+
+
+                <div class="Container3">
+
+                    <img class="image3" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="~/images/Folderlogo.png" data-holder-rendered="true">
+
+
+                    <div class="overlay3">
+
+                        <a href="@Url.Action("MaterialApoyoModule", "Curso", new { Id = Model.Curso.Id })">      <div class="text3">Material Apoyo </div> </a>
+                    </div>
+
+                    <h4 class="title2" align="center">  Material Apoyo</h4>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="col-md-4">
+
+
+                <div class="Container3">
+
+                    <img class="image3" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="~/images/Folderlogo.png" data-holder-rendered="true">
+
+
+                    <div class="overlay3">
+
+                        <a href="@Url.Action("CalificacionModule", "Curso", new { Id = Model.Curso.Id})">      <div class="text3">Calificaciones</div> </a>
+                    </div>
+
+                    <h4 class="title2" align="center">  Calificaciones</h4>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+
+                <div class="Container3">
+
+                    <img class="image3" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="~/images/Folderlogo.png" data-holder-rendered="true">
+
+
+                    <div class="overlay3">
+
+                        <a href="@Url.Action("Evaluaciones", "Evaluacion", new { Id = Model.Curso.Id})">      <div class="text3">Evaluaciones</div> </a>
+                    </div>
+
+                    <h4 class="title2" align="center">  Evaluaciones</h4>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+
+                <div class="Container3">
+
+                    <img class="image3" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="~/images/Folderlogo.png" data-holder-rendered="true">
+
+
+                    <div class="overlay3">
+
+                        <a href="@Url.Action("Sesion", "Sesiones", new { Id = Model.Curso.Id})">      <div class="text3">Sesiones en linea</div> </a>
+                    </div>
+
+                    <h4 class="title2" align="center"> Sesiones en linea</h4>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+
+                <div class="Container3">
+
+                    <img class="image3" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="~/images/Folderlogo.png" data-holder-rendered="true">
+
+
+                    <div class="overlay3">
+
+                        <a href="@Url.Action("QuizIndex", "Curso", new { Id = Model.Curso.Id})">      <div class="text3">Quiz</div> </a>
+                    </div>
+
+                    <h4 class="title2" align="center"> Quiz</h4>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,118 @@
+﻿@model LMS.Models.ViewModels.CalificacionyTareaViewModel
+
+
+
+@{
+    ViewData["Title"] = "Create";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h2 class="text-info"> Crear Calificación</h2>
+
+<br />
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<form method="post" asp-action="Create">
+    <div class="border backgroundWhite">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Calificaciones.TareaId" class="col-form-label"></label>
+
+
+            </div>
+
+            <div class="col-5">
+                @Html.DropDownListFor(model => model.Calificaciones.TareaId, new SelectList(Model.TareasCollection, "Id", "NombreTarea"), "Select")
+
+            </div>
+
+
+        </div>
+
+        @*<div class="form-group row">
+
+                <div class="col-3">
+
+                    <label asp-for="Calificaciones.Tareas.ClaseId" class="col-form-label"></label>
+
+
+                </div>
+
+                <div class="col-5">
+                    @Html.DropDownListFor(model => model.Calificaciones.Tareas.ClaseId, new SelectList(Model.TareasCollection, "Id", "NombreTarea"), "Select")
+
+
+
+
+                </div>
+
+
+            </div>*@
+
+        @*<div class="form-group row">
+
+                <div class="col-3">
+
+                    <label asp-for="Calificaciones.EstudianteId" class="col-form-label"></label>
+
+
+                </div>
+
+                <div class="col-5">
+                    @Html.DropDownListFor(model => model.Calificaciones.EstudianteId, new SelectList(Model.EstudiantesCollection, "Id", "NombreEstudiante"), "Select")
+
+                </div>
+
+
+            </div>*@
+
+
+
+    
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Calificaciones.Nota" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input asp-for="Calificaciones.Nota" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Calificaciones.Nota" class="text-danger"></span>
+        </div>
+
+
+
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+                <partial name="_CreateAndBackToListButton" />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+
+

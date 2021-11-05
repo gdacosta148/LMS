@@ -1,0 +1,149 @@
+﻿@model LMS.Models.ViewModels.UsuarioyClaseViewModel
+@using LMS.Extensions
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h2 class="text-info"> Crear Profesor</h2>
+
+<br />
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<form method="post" asp-action="Create">
+    <div class="border backgroundWhite">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Profesores.UserId" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <select id="ddlListadeusuarios" asp-for="Profesores.UserId" asp-items="Model.UsuariosList.ToSelectListItem(Model.Profesores.UserId)" class="form-control"></select>
+            </div>
+
+
+        </div>
+
+        @*@*<div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Profesores.ClaseId" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <select id="ddlListadeusuarios" asp-for="Profesores.ClaseId" asp-items="Model.ClaseList.ToSelectListItem(Model.Profesores.ClaseId)" class="form-control"></select>
+            </div>
+
+
+        </div>*@
+
+
+        @*<div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Profesores.MateriaId" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <select id="ddlListadeusuarios" asp-for="Profesores.MateriaId" asp-items="Model.MateriaList.ToSelectListItem(Model.Profesores.MateriaId)" class="form-control"></select>
+            </div>
+
+
+        </div>*@
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+                <label class="col-form-label"> Materias que enseña:</label>
+            </div>
+
+            <table class="table table-borderless">
+
+                @for (int i = 0; i < Model.MateriasDisponibles.Capacity; i++)
+                {
+
+                    <tr>
+
+                        <td>
+
+                            @Html.HiddenFor(x => Model.MateriasDisponibles[i].Id)
+
+                            @Html.DisplayFor(x => Model.MateriasDisponibles[i].Title)
+                        </td>
+
+                        <td>
+
+                            @Html.CheckBoxFor(x => Model.MateriasDisponibles[i].IsChecked)
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+                <label class="col-form-label"> Cursos que dicta:</label>
+            </div>
+
+            <table class="table table-borderless">
+
+                @for (int i = 0; i < Model.ClasesDisponibles.Capacity; i++)
+                {
+
+                    <tr>
+
+                        <td>
+
+                            @Html.HiddenFor(x => Model.ClasesDisponibles[i].Id)
+
+                            @Html.DisplayFor(x => Model.ClasesDisponibles[i].Title)
+                        </td>
+
+                        <td>
+
+                            @Html.CheckBoxFor(x => Model.ClasesDisponibles[i].IsChecked)
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+                <partial name="_CreateAndBackToListButton" />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

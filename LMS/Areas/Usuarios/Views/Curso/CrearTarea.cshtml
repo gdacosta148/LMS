@@ -1,0 +1,174 @@
+﻿@model LMS.Models.ViewModels.TareasViewModel
+@using LMS.Extensions
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<br />
+
+<h2 class="text-info"> Crear Tarea</h2>
+
+<br />
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<form method="post" asp-action="Create">
+    <div class="border backgroundWhite">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+
+        @*<div class="form-group row" style="display :none">
+
+                <div class="col-3">
+
+                    <label  asp-for="Tareas.UserId" class="col-form-label"></label>
+                </div>
+
+                <div class="col-5">
+
+                    <select id="ddlListadeusuarios" asp-for="Tareas.UserId" asp-items="Model.UsuariosList.ToSelectListItem(Model.Tareas.UserId)" class="form-control"></select>
+                </div>
+
+
+            </div>*@
+
+        @*<div class="form-group row">
+
+                <div class="col-3">
+
+                    <label asp-for="Tareas.ClaseId" class="col-form-label"></label>
+                </div>
+
+                <div class="col-5">
+
+                    <select id="ddlListadeusuarios" asp-for="Tareas.ClaseId" asp-items="Model.ClaseList.ToSelectListItem(Model.Tareas.ClaseId)" class="form-control"></select>
+                </div>
+
+
+            </div>*@
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Tareas.CursoId" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <select id="ddlListadeusuarios" asp-for="Tareas.CursoId" asp-items="Model.CursoList.ToSelectListItem(Model.Tareas.CursoId)" class="form-control"></select>
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Tareas.MateriaId" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <select asp-for="Tareas.MateriaId" asp-items="Model.MateriaList.ToSelectListItem(Model.Tareas.MateriaId)" class="form-control"></select>
+            </div>
+
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Tareas.NombreTarea" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input asp-for="Tareas.NombreTarea" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Tareas.NombreTarea" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Tareas. Material" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                @Html.TextAreaFor(t => t.Tareas.Material)
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+                <partial name="_CreateAndBackToListButton" />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<script>
+
+    $(document).ready(function () {
+        $("#Tareas_Material").summernote({
+            height: 300,
+            minHeight: null,
+            maxHeight: null,
+
+            callbacks: {
+                onImageUpload: function (files) {
+                    for (var i = 0; i < files.length; i++) {
+                        uploadImage(files[i]);
+                    }
+                }
+            },
+
+        });
+    });
+
+              function uploadImage(file) {
+                  var formData = new FormData();
+                    var url1 = '@Url.Action("UploadFile", "Tareas")';
+            formData.append("uploadFiles", file);
+            $.ajax({
+                data: formData,
+                type: "POST",
+                url: url1,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (FileUrl) {
+                    alert(FileUrl);
+                    var imgNode = document.createElement('img');
+                    imgNode.src = FileUrl;
+                    $('#Tareas_Material').summernote('insertNode', imgNode);
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+        }
+
+
+</script> 

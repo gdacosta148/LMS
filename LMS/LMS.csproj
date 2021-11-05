@@ -1,0 +1,174 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
+    <UserSecretsId>aspnet-LMS-D19BB9C8-5025-4201-A2E3-C62013C4B3E0</UserSecretsId>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\lib\jodit-3.6.1\**" />
+    <Content Remove="wwwroot\lib\jodit-3.6.1\**" />
+    <EmbeddedResource Remove="wwwroot\lib\jodit-3.6.1\**" />
+    <None Remove="wwwroot\lib\jodit-3.6.1\**" />
+    <TypeScriptCompile Remove="wwwroot\lib\jodit-3.6.1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200724172737_ModelsToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20200724172737_ModelsToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200729195045_CalificacionesToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20200729195045_CalificacionesToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200730020944_CalificacionesToDataBase.cs" />
+    <Compile Remove="Data\Migrations\20200730020944_CalificacionesToDataBase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200730220554_CalificacionesTOdATABASE5.cs" />
+    <Compile Remove="Data\Migrations\20200730220554_CalificacionesTOdATABASE5.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200731001850_Calificaciones4toDatabase.cs" />
+    <Compile Remove="Data\Migrations\20200731001850_Calificaciones4toDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200731023632_Calificaciones7todatabase.cs" />
+    <Compile Remove="Data\Migrations\20200731023632_Calificaciones7todatabase.Designer.cs" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <NoWarn>NU1603</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="Extensions\Interface\" />
+    <Folder Include="wwwroot\Files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\Summernote\font\summernote.woff2" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ar-AR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ar-AR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-az-AZ.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-az-AZ.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-bg-BG.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-bg-BG.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ca-ES.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ca-ES.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-cs-CZ.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-cs-CZ.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-da-DK.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-da-DK.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-de-DE.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-de-DE.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-el-GR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-el-GR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-es-ES.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-es-ES.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-es-EU.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-es-EU.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-fa-IR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-fa-IR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-fi-FI.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-fi-FI.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-fr-FR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-fr-FR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-gl-ES.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-gl-ES.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-he-IL.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-he-IL.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-hr-HR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-hr-HR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-hu-HU.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-hu-HU.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-id-ID.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-id-ID.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-it-IT.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-it-IT.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ja-JP.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ja-JP.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ko-KR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ko-KR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-lt-LT.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-lt-LT.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-lt-LV.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-lt-LV.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-mn-MN.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-mn-MN.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-nb-NO.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-nb-NO.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-nl-NL.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-nl-NL.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-pl-PL.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-pl-PL.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-pt-BR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-pt-BR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-pt-PT.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-pt-PT.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ro-RO.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ro-RO.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ru-RU.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ru-RU.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sk-SK.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sk-SK.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sl-SI.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sl-SI.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sr-RS-Latin.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sr-RS-Latin.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sr-RS.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sr-RS.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sv-SE.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-sv-SE.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ta-IN.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-ta-IN.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-th-TH.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-th-TH.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-tr-TR.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-tr-TR.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-uk-UA.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-uk-UA.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-uz-UZ.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-uz-UZ.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-vi-VN.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-vi-VN.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-zh-CN.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-zh-CN.min.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-zh-TW.js" />
+    <None Include="wwwroot\js\Summernote\lang\summernote-zh-TW.min.js" />
+    <None Include="wwwroot\js\Summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <None Include="wwwroot\js\Summernote\plugin\hello\summernote-ext-hello.js" />
+    <None Include="wwwroot\js\Summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <None Include="wwwroot\js\Summernote\summernote-bs4.js" />
+    <None Include="wwwroot\js\Summernote\summernote-bs4.js.map" />
+    <None Include="wwwroot\js\Summernote\summernote-bs4.min.js" />
+    <None Include="wwwroot\js\Summernote\summernote-bs4.min.js.map" />
+    <None Include="wwwroot\js\Summernote\summernote-lite.js" />
+    <None Include="wwwroot\js\Summernote\summernote-lite.js.map" />
+    <None Include="wwwroot\js\Summernote\summernote-lite.min.js" />
+    <None Include="wwwroot\js\Summernote\summernote-lite.min.js.map" />
+    <None Include="wwwroot\js\Summernote\summernote.js" />
+    <None Include="wwwroot\js\Summernote\summernote.js.map" />
+    <None Include="wwwroot\js\Summernote\summernote.min.js" />
+    <None Include="wwwroot\js\Summernote\summernote.min.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="16.10.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.4.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="nClam" Version="6.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="19.2.0.62" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,55 @@
+﻿@model LMS.Models.Tareas
+@{
+    ViewData["Title"] = "Material de Apoyo";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<br />
+
+
+
+
+
+<div class="backgroundWhiteBorder row">
+
+
+<div class="panel-group">
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">
+            @Html.DisplayFor(model => model.NombreTarea)
+
+        </div>
+
+
+
+        <div class="panel-body">
+
+
+            @Html.Raw(Model.Material)
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+@*<div class="border backgroundWhite">
+    <div class="row" id="menu-wrapper">
+
+        <div class="col-6">
+
+            <h2 class="text-info">    @Html.DisplayFor(model => model.NombreTarea)</h2>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center">
+        @Html.Raw(Model.Material)
+
+
+    </div>
+
+
+</div>*@

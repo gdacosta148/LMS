@@ -1,0 +1,110 @@
+﻿@model LMS.Models.ViewModels.CursoViewModel
+@using LMS.Extensions
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+    <br />
+
+    <h2 class="text-info text-center"> Crear Curso</h2>
+
+    <br />
+    <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+
+    <form asp-action="Create">
+        <div class="border backgroundWhite">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+          
+
+            <div class="form-group row">
+
+                 <div class="col-md-offset-2 col-md-10">
+                <div class=" col-3 ">
+                    <label asp-for="Curso.Nombre" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Curso.Nombre" class="form-control" />
+
+                </div>
+                <span asp-validation-for="Curso.Nombre" class="text-danger"></span>
+
+                     </div>
+            </div>
+
+            <div class="form-group row">
+
+                @*<div class="col-3">
+                    <label class="col-form-label"> Clases que seran asignadas a este curso:</label>
+                </div>*@
+
+                
+
+                    <div class="col-md-offset-2 col-md-10">
+
+                        <table >
+
+                            <tr>
+
+                                <th> Clase: </th>
+                            </tr>
+
+                            @for (int i = 0; i < Model.ClasesDisponibles.Capacity; i++)
+                            {
+
+                                <tr>
+
+                                    <td>
+
+                                        @Html.HiddenFor(x => Model.ClasesDisponibles[i].Id)
+
+                                        @Html.DisplayFor(x => Model.ClasesDisponibles[i].Title)
+                                    </td>
+
+                                    <td>
+
+                                        @Html.CheckBoxFor(x => Model.ClasesDisponibles[i].IsChecked)
+
+                     
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </table>
+                    
+                    </div>
+
+
+                    
+
+
+                </div>
+
+
+
+                <div class="form-group row">
+
+                    <div class="col-5 offset-2">
+
+                        <partial name="_CreateAndBackToListButton" />
+
+                    </div>
+
+                </div>
+
+
+            </div>
+    </form>
+
+
+
+
+
+
+
+   

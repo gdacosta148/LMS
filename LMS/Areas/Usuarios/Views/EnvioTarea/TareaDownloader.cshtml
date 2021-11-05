@@ -1,0 +1,171 @@
+﻿@model LMS.Models.ViewModels.EnvioTareaViewModel
+@using LMS.Extensions
+
+@using LMS.Utility
+@{
+    ViewData["Title"] = "Tarea Downloader";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<br />
+<br />
+
+<div class="border backgroundWhite">
+
+    <div class="row">
+
+        <div class="col-6">
+
+            <h2 class="text-info">Archivos de la tarea:</h2>
+        </div>
+
+        @*@if (User.IsInRole(SD.TeacherUser))
+        {
+            <div class="col-6 text-right">
+
+                <partial name="_EditActivityPartial" model="Model.EnvioTarea.Id"  />
+            </div>
+        }*@
+        </div>
+
+
+    <br />
+
+
+    <div>
+        @if (Model.EnvioTareaList.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+
+                    <th>
+                        @Html.DisplayNameFor(m => m.EnvioTarea.FileURL)
+
+
+
+                    </th>
+
+
+                    <th>
+                        <p>Nombre Tarea: </p>
+                    </th>
+
+                    <th>
+                        <p>  Archivo:</p>
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(m => m.EnvioTarea.Descripcion)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(m => m.EnvioTarea.Calificacion.Nota)
+                    </th>
+
+                    <th>
+                        <p>Retroalimentación: </p>
+                    </th>
+
+                    <th>
+
+                        <p>  Archivo revisado:</p>
+
+                    </th>
+
+                    <th>
+
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.EnvioTareaList)
+                {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(m => item.FileURL)
+
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(m => item.Calificacion.Nombre)
+                </td>
+
+                <td>
+
+                    @Html.ActionLink("Download", "DownloadFile", new { fileName = item.FileURL })
+
+
+                </td>
+
+                <td>
+
+                    @Html.Raw(item.Descripcion)
+                </td>
+
+                <td>
+
+                    @Html.DisplayFor(m => item.Calificacion.Nota)
+                </td>
+
+
+                <td>
+
+                    @Html.Raw(item.Calificacion.ComentarioProfesor)
+                </td>
+                .
+
+                <td>
+                    @if(item.Calificacion.FileURL != null) { 
+                    @Html.ActionLink("Download", "DownloadFile", new { fileName = item.Calificacion.FileURL })
+
+                    }
+                    
+                </td>
+
+               
+
+                <td>
+                    @*Esta parte sirve para enviar la tarea de nuevo o más bien editarla y reenviar el archivo*@
+
+        
+
+                    @if (item.Calificacion.Tareas.EndDate > DateTime.Now && User.IsInRole(SD.StudenUser))
+                    {
+
+                        <partial name="_DownloadButtonPartial" model="item.Id" />
+
+                    }
+                    else if (User.IsInRole(SD.TeacherUser))
+                    {
+
+                        @*<p>*@
+                        @if (item.Calificacion.Calificado != 1)
+                        {
+                            <a href="@Url.Action("CalificarTarea", "Calificaciones", new { Id = item.Id })" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp;Calificar Tarea</a>
+                            @*</p>*@
+                            @*<partial name="_DownloadEditPartial" model="item.Id" />*@
+                        }
+
+                        else
+                        {
+                            <a href="@Url.Action("EditarCalificacion", "Calificaciones", new { Id = item.Id })" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp;Editar Calificación</a>
+
+                        }
+                    }
+                </td>
+            </tr>
+
+                }
+            </table>
+        }
+        else
+        {
+            <p> no hay ninguna clase existente...</p>
+        }
+    </div>
+
+
+</div>

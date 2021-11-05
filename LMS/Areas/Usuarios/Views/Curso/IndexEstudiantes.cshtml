@@ -1,0 +1,100 @@
+﻿@model IEnumerable<CursoClase>
+
+@using LMS.Utility
+
+@{
+    ViewData["Title"] = "Cursos";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="border backgroundWhite">
+
+    <div class="row">
+
+        <div class="col-6">
+
+            <h2 class="text-info">Lista de Cursos</h2>
+        </div>
+
+    </div>
+
+
+    <br />
+
+
+
+
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Curso.Nombre)
+
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(m => m.Curso.Profesor.ApplicationUser.Nombre)
+
+                    </th>
+
+
+
+                    <th>
+                        @Html.DisplayNameFor(m => m.Clase.Nombre)
+                    </th>
+
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+
+
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                           <a href="@Url.Action("CursoModule", "Curso", new { Id= item.Curso.Id})">@Html.DisplayFor(m => item.Curso.Nombre)</a>
+                            @*@Html.DisplayFor(m => item.Curso.Nombre)*@
+
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(m => item.Curso.Profesor.ApplicationUser.Nombre)
+
+                        </td>
+                        <td>
+                            
+
+                                @Html.DisplayFor(m => item.Clase.Nombre)
+
+                               
+
+
+
+                            
+                        </td>
+
+
+                    
+
+
+                    </tr>
+
+                }
+            </table>
+        }
+        else
+        {
+            <p> no hay ningun curso existente...</p>
+        }
+    </div>
+
+</div>

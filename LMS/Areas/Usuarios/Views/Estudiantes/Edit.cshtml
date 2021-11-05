@@ -1,0 +1,87 @@
+﻿@model LMS.Models.ViewModels.EstudianteyClaseViewModel
+@using LMS.Extensions
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h2 class="text-info"> Editar Estudiante</h2>
+
+<br />
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<form method="post" asp-action="Edit">
+    <div class="border backgroundWhite">
+
+        <input type="hidden" asp-for="Estudiantes.UserId" />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Estudiantes.UserId" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <select id="ddlListadeusuarios" asp-for="Estudiantes.UserId" disabled asp-items="Model.UsuariosList.ToSelectListItem(Model.Estudiantes.UserId)" class="form-control"></select>
+            </div>
+
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Estudiantes.ClaseId" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <select id="ddlListadeusuarios"  asp-for="Estudiantes.ClaseId" asp-items="Model.ClaseList.ToSelectListItem(Model.Estudiantes.ClaseId)" class="form-control"></select>
+            </div>
+
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Estudiantes.NombreEstudiante" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input disabled asp-for="Estudiantes.NombreEstudiante" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Estudiantes.NombreEstudiante" class="text-danger"></span>
+        </div>
+
+
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+                <partial name="_EditAndBackToListButton" model="Model.Estudiantes.Id" />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+

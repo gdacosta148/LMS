@@ -1,0 +1,130 @@
+﻿@model LMS.Models.ViewModels.CursoViewModel
+
+
+@using LMS.Utility
+
+@{
+    ViewData["Title"] = "Actividades";
+    //Layout = "~/Views/Shared/_VistaCursoModelo.cshtml";
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+
+<div class="card mb-4">
+
+    <h2>Actividades</h2>
+    <div class="panel-group">
+
+        @if (User.IsInRole(SD.StudenUser))
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">Lista de Tareas</div>
+
+
+                @if (Model.CalificacionesList.Count() > 0)
+                {
+
+
+
+                    foreach (var item in Model.CalificacionesList /*Model.TareasList*/)
+                    {
+
+                        //int result = DateTime.Compare(item.EndDate, DateTime.Now);
+                        <div class="panel-body">
+
+                            @if (item.Enviado != 1 && item.Tareas.EndDate > DateTime.Now)
+                            {
+
+                                <a href="@Url.Action("Create", "EnvioTarea", new { Id = item.Tareas.CursoId , CalId = item.Id })">@Html.DisplayFor(m => item.Tareas.NombreTarea@*item.NombreTarea*@)</a>
+
+                            }
+
+                            else
+                            {
+                                <a href="@Url.Action("TareaDownloader", "EnvioTarea", new { Id = item.Id @*item.CursoId*@ })">@Html.DisplayFor(m => item.Tareas.NombreTarea@*item.NombreTarea*@)</a>
+
+                            }
+
+                        </div>
+                    }
+
+                }
+                else
+                {
+                    <div class="panel-body">
+
+                        No hay ninguna tarea existente...
+
+                    </div>
+
+                }
+
+
+
+            </div>
+        }
+        <div class="panel panel-primary">
+            <div class="panel-heading">Material de apoyo actividades</div>
+
+            @if (Model.TareasList.Count() > 0)
+            {
+                foreach (var item in Model.TareasList)
+                {
+                    <div class="panel-body">
+
+                        <a href="@Url.Action("MaterialApoyo", "Curso", new { Id = item.Id })">@Html.DisplayFor(m => item.NombreTarea)</a>
+
+                    </div>
+                }
+            }
+
+            else
+            {
+                <div class="panel-body">
+
+                    No hay ningun material de apoyo existente...
+
+                </div>
+
+            }
+        </div>
+
+        @if (User.IsInRole(SD.TeacherUser))
+        {
+
+
+            <p>
+
+                <a asp-controller="Tareas" asp-action="CrearTarea" asp-route-Id="@Model.Curso.Id" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Crear Nueva Tarea</a>
+            </p>
+
+
+        }
+        <div class="panel panel-success">
+            <div class="panel-heading">Panel with panel-success class</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Panel with panel-info class</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">Panel with panel-warning class</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">Panel with panel-danger class</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+    </div>
+
+</div>
+
+
+

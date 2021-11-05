@@ -1,0 +1,57 @@
+﻿@model LMS.Models.Calificaciones
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Eliminar Calificacion</h2>
+<br />
+<form method="post">
+    <div class="border backgroundWhite">
+        <input type="hidden" asp-for="Id" />
+        <fieldset disabled>
+            @*<div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="Profesor." class="custom-label"></label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="ApplicationUser.Nombre" class="form-control" />
+                    </div>
+                </div>*@
+            @*<div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Tareas.NombreTarea" class="custom-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Tareas.NombreTarea" class="form-control" />
+                </div>
+            </div>*@
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Estudiante.NombreEstudiante" class="custom-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Estudiante.NombreEstudiante" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Nota" class="custom-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Nota" class="form-control" />
+                </div>
+            </div>
+
+        </fieldset>
+        <br />
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackToListButton" model="Model.Id" />
+            </div>
+        </div>
+    </div>
+</form>

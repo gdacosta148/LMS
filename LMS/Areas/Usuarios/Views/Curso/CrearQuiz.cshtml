@@ -1,0 +1,85 @@
+﻿@model LMS.Models.ViewModels.CursoViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h2 class="text-info"> Crear Quiz</h2>
+
+<br />
+
+<form method="post" asp-action="CrearQuiz">
+    <div class="border backgroundWhite">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-2">
+
+                <label asp-for="Quiz.QuizName" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input asp-for="Quiz.QuizName" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Quiz.QuizName" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-2">
+
+                <label asp-for="Quiz.QuestionQuantity" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input asp-for="Quiz.QuestionQuantity" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Quiz.QuestionQuantity" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-2">
+
+                <label asp-for="Quiz.maximunscore" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input asp-for="Quiz.maximunscore" class="form-control" />
+            </div>
+
+            <span asp-validation-for="Quiz.maximunscore" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+                <div class="col-6">
+
+                    <input type="submit" class="btn btn-info form-control" value="CrearQuiz" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

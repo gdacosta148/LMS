@@ -1,0 +1,97 @@
+﻿@using LMS.Utility
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body class="search-background">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LMS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (User.IsInRole(SD.ManagerUser))
+                        {
+                            <li class="nav-item dropdown text-white-50">
+
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                    Contenido
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbardDropDownMenuLink">
+
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Clases" asp-area="Usuarios">Clases</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Materia" asp-area="Usuarios">Materia</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="User" asp-area="Usuarios">Usuarios</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Profesores" asp-area="Usuarios">Profesores</a>
+
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Estudiantes" asp-area="Usuarios">Estudiantes</a>
+                                </div>
+                            </li>
+                        }
+
+                        @if (User.IsInRole(SD.TeacherUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Usuarios" asp-controller="Tareas" asp-action="Index">Tareas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Usuarios" asp-controller="Curso" asp-action="Index">Cursos</a>
+                            </li>
+
+                        }
+                        @if (User.IsInRole(SD.TeacherUser) || User.IsInRole(SD.StudenUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Usuarios" asp-controller="Calificaciones" asp-action="Index">Notas</a>
+                            </li>
+
+
+                        }
+
+                        @if (User.IsInRole(SD.StudenUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Usuarios" asp-controller="Curso" asp-action="IndexEstudiantes">Cursos</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+
+        
+        <div class="container">
+            &copy; 2020 - LMS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+            Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

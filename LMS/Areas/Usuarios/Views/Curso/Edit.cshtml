@@ -1,0 +1,91 @@
+﻿
+@model LMS.Models.ViewModels.CursoViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h2 class="text-info"> Editar CURSO</h2>
+
+<br />
+@*<partial name="_StatusMessage" model="Model.StatusMessage" />*@
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<form method="post" asp-action="Edit">
+    <div class="border backgroundWhite">
+
+        <input type="hidden" asp-for="Curso.Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+
+        </div>
+
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+
+                <label asp-for="Curso.Nombre" class="col-form-label"></label>
+            </div>
+
+            <div class="col-5">
+
+                <input asp-for="Curso.Nombre" class="form-control" />
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group row">
+
+            <div class="col-3">
+                <label class="col-form-label"> Clases del Curso:</label>
+            </div>
+
+            <table class="table table-borderless">
+
+                @for (int i = 0; i < Model.ClasesDisponibles.Count; i++)
+                {
+
+                    <tr>
+
+                        <td>
+
+                            @Html.HiddenFor(x => Model.ClasesDisponibles[i].Id)
+
+                            @Html.DisplayFor(it => Model.ClasesDisponibles[i].Title)
+                        </td>
+
+                        <td>
+
+                            @Html.CheckBoxFor(it => Model.ClasesDisponibles[i].IsChecked)
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+
+
+        <div class="form-group row">
+
+            <div class="col-5 offset-2">
+
+                <partial name="_EditAndBackToListButton" model="Model.Curso.Id" />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
